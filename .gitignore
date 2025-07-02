@@ -1,9 +1,21 @@
+# Byte-compiled / optimized / DLL files
 __pycache__/
+*.py[cod]
+*$py.class
 
+# Virtual environment
 venv/
+
+# Django database
 file_storage/db.sqlite3
 
-/media/*
-!/media/.gitkeep
+# Media files (excluding .gitkeep)
+file_storage/media/*
+!file_storage/media/.gitkeep
 
-idea/
+# PyCharm
+.idea/
+
+# macOS / Windows system files
+.DS_Store
+Thumbs.db

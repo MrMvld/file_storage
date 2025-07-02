@@ -1,9 +1,0 @@
-__pycache__/
-
-venv/
-file_storage/db.sqlite3
-
-/media/*
-!/media/.gitkeep
-
-idea/
