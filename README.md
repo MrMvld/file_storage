@@ -28,9 +28,13 @@ python manage.py runserver
 ## API Эндпоинты
 
 ### Загрузка файла
+
+```http
 POST /storage/upload/
+```
 
 **Параметры запроса:**
+
 Тип: multipart/form-data
 Поле: file
 
@@ -42,13 +46,28 @@ POST /storage/upload/
 ```
 
 ### Скачивание файла
+
+```http
 GET /storage/download/<file_id>/
+```
+
 Скачивает и восстанавливает файл по его file_id.
 
 ### HTML-интерфейс
+
 Для удобного тестирования доступны формы, чтобы посмотреть, как загружается и как скачивается файл:
-Загрузка: /storage/upload-test/
-Скачивание: /storage/download-test/
+
+Загрузка: 
+
+```http
+/storage/upload-test/
+```
+
+Скачивание: 
+
+```http
+/storage/download-test/
+```
 
 ---
 
