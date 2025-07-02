@@ -59,13 +59,13 @@ GET /storage/download/<file_id>/
 
 Загрузка: 
 
-```http
+```
 /storage/upload-test/
 ```
 
 Скачивание: 
 
-```http
+```
 /storage/download-test/
 ```
 
