@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Скачать файл по file_id</title>
+</head>
+<body>
+    <h2>Скачивание файла в Django по file_id</h2>
+
+    <form id="downloadForm">
+        <label for="file_id">Введите file_id:</label><br><br>
+        <input type="text" id="file_id" name="file_id" required><br><br>
+        <button type="submit">Скачать</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        document.getElementById('downloadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const fileId = document.getElementById('file_id').value;
+            const link = document.createElement('a');
+            link.href = `/storage/download/${fileId}/`;
+            link.download = '';  // браузер сам определит имя
+            link.click();
+
+            document.getElementById('result').innerText = 'Скачивание запущено (если файл найден).';
+        });
+    </script>
+</body>
+</html>

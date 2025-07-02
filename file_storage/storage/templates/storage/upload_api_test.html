@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тест загрузки файла</title>
+</head>
+<body>
+    <h2>Загрузка файла в Django через API</h2>
+
+    <form id="uploadForm" enctype="multipart/form-data">
+        <label for="file">Выберите файл:</label><br><br>
+        <input type="file" name="file" id="file" required><br><br>
+        <button type="submit">Загрузить</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const formData = new FormData();
+            const file = document.getElementById('file').files[0];
+            formData.append('file', file);
+
+            const response = await fetch('/storage/upload/', {
+                method: 'POST',
+                body: formData
+            });
+
+            const resultElement = document.getElementById('result');
+
+            if (response.ok) {
+                const data = await response.json();
+                resultElement.innerHTML = `
+                    ✅ Файл загружен!<br>
+                    <strong>file_id:</strong> <code>${data.file_id}</code>
+                `;
+            } else {
+                const error = await response.json();
+                resultElement.innerHTML = `<span style="color:red">❌ Ошибка: ${error.error}</span>`;
+            }
+        });
+    </script>
+</body>
+</html>
